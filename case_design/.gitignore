@@ -1,0 +1,2 @@
+# ignore FreeCAD local backups
+*.FCStd1
