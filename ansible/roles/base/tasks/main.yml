@@ -1,0 +1,26 @@
+- name: create ansible group
+  tags: base
+  group:
+    name: ansible
+    system: yes
+
+- name: create ansible user
+  tags: base
+  user:
+    name: ansible
+    groups: ansible
+
+- name: add ssh key for ansible
+  tags: always
+  authorized_key:
+    user: ansible
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+MIQ6peEG+gFUEpJ+5hKib8Oqw7VDWVVhzOz8C/eu+ admin@vivi.land"
+
+- name: add sudoers file for ansible
+  tags: always
+  copy:
+    src: sudoers_ansible
+    dest: /etc/sudoers.d/ansible
+    owner: root
+    group: root
+    mode: 0440
