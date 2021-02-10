@@ -1,26 +1,14 @@
-- name: create ansible group
-  tags: base
-  group:
-    name: ansible
-    system: yes
+- name: update and upgrade system
+  tags: maintenance
+  apt:
+    update_cache: yes
+    upgrade: "safe"
+    autoremove: yes
+  changed_when: false
+  when: ansible_distribution == "Ubuntu"
 
-- name: create ansible user
-  tags: base
-  user:
-    name: ansible
-    groups: ansible
+- import_tasks: setup_ansible_user.yml
+  tags: setup
 
-- name: add ssh key for ansible
-  tags: always
-  authorized_key:
-    user: ansible
-    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE+MIQ6peEG+gFUEpJ+5hKib8Oqw7VDWVVhzOz8C/eu+ admin@vivi.land"
-
-- name: add sudoers file for ansible
-  tags: always
-  copy:
-    src: sudoers_ansible
-    dest: /etc/sudoers.d/ansible
-    owner: root
-    group: root
-    mode: 0440
+- import_tasks: configure_firewall.yml
+  tags: [setup, firewall]
