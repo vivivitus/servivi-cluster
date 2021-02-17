@@ -1,0 +1,19 @@
+- name: Install docker
+  apt:
+    name: docker.io
+    state: latest
+
+- name: Install python3 pip
+  apt:
+    name: python3-pip
+    state: present
+
+- name: Install docker-py
+  pip:
+    name: docker-py
+    state: present
+
+- name: Init a new swarm with default parameters
+  community.general.docker_swarm:
+    state: present
+    force: no

@@ -1,0 +1,43 @@
+all:
+  hosts:
+    node1:
+      ansible_host: 2a02:168:537f:2:5054:ff:feca:e91f
+    node2:
+      ansible_host: 2a02:168:537f:2:5054:ff:fe6f:4419
+    node3:
+      ansible_host: 2a02:168:537f:2:5054:ff:fe81:79e8
+    raspberry:
+      ansible_host: 2a04:ee41:2:e1c2:4393:a846:b00e:ee6f
+    ganymede:
+      ansible_host: 2a02:168:537f:2:21e:6ff:fe45:2436
+
+  children:
+    swarm:
+      children:
+        manager:
+        worker:
+
+    manager:
+      hosts:
+        node1:
+        node2:
+        node3:
+        raspberry:
+        ganymede:
+
+    worker:
+      hosts:
+        node1:
+        node2:
+        node3:
+
+    development:
+      hosts:
+        node1:
+        node2:
+        node3:
+
+    production:
+      hosts:
+        ganymede:
+        raspberry:

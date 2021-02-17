@@ -1,15 +1,20 @@
 - name: Install ufw for easy firewall configuration
   apt:
     name: ufw
-  when: ansible_os_family == 'Debian'
 
 - name: Deny everything and enable ufw
   ufw:
     state: enabled
     default: deny
 
-- name: Limit ssh retries (default 6)
+- name: Allow http access
   ufw:
-    rule: limit
-    port: "22"
+    rule: allow
+    port: "80"
+    proto: tcp
+
+- name: Allow https access
+  ufw:
+    rule: allow
+    port: "443"
     proto: tcp

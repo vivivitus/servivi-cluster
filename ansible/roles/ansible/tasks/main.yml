@@ -2,7 +2,7 @@
   tags: setup
   group:
     name: ansible
-    system: yes
+    system: true
 
 - name: create ansible user
   user:

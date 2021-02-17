@@ -1,9 +1,0 @@
-[manager]
-n1.local
-n2.local
-n3.local
-
-[worker]
-n1.local
-n2.local
-n3.local

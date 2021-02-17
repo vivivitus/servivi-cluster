@@ -7,5 +7,6 @@
   changed_when: false
   when: ansible_distribution == "Ubuntu"
 
-- import_tasks: setup_firewall.yml
-  tags: [setup, firewall]
+- import_tasks: setup_docker_swarm.yml
+  tags: [swarm, setup]
+  when: ansible_distribution == "Ubuntu"

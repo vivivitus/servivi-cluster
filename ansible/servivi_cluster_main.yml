@@ -1,0 +1,21 @@
+- name: Basic play for updating and configuring remote devices.
+  tags: [setup, maintenance]
+  hosts: all
+  become: true
+  roles:
+    - base
+  
+- hosts: swarm:&development
+  become: true
+  roles:
+    - swarm
+
+- hosts: manager:&development
+  become: true
+  roles:
+    - manager
+
+- hosts: worker:&development
+  become: true
+  roles:
+    - worker

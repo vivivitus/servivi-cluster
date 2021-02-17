@@ -1,0 +1,7 @@
+- name: Install wireguard
+  apt:
+    name: wireguard
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+  
