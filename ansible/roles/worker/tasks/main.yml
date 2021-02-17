@@ -5,8 +5,4 @@
     upgrade: "safe"
     autoremove: yes
   changed_when: false
-  when: ansible_distribution == "Ubuntu"
-
-- import_tasks: setup_docker_swarm.yml
-  tags: [swarm, setup]
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_os_family == 'Debian'

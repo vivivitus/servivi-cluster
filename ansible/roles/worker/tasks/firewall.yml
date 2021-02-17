@@ -1,12 +1,3 @@
-- name: Install ufw for easy firewall configuration
-  apt:
-    name: ufw
-
-- name: Deny everything and enable ufw
-  ufw:
-    state: enabled
-    default: deny
-
 - name: Allow http access
   ufw:
     rule: allow

@@ -6,3 +6,7 @@
     autoremove: yes
   changed_when: false
   when: ansible_os_family == 'Debian'
+
+- import_tasks: setup_docker_swarm.yml
+  tags: [swarm, setup]
+  when: ansible_os_family == 'Debian'

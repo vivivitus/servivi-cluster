@@ -15,5 +15,5 @@
 
 - name: Init a new swarm with default parameters
   community.general.docker_swarm:
-    state: present
-    force: no
+    state: absent
+    force: yes

@@ -5,7 +5,8 @@
     upgrade: "safe"
     autoremove: yes
   changed_when: false
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_os_family == 'Debian'
 
-- import_tasks: setup_firewall.yml
+- import_tasks: firewall.yml
   tags: [setup, firewall]
+  when: ansible_os_family == 'Debian'
